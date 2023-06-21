@@ -1,5 +1,8 @@
 package ToyShopProject;
 
+import java.util.PriorityQueue;
+
+
 //здесь будем описывать игрушки
 public class Toy { // основные параметры игрушки
   private int id;
@@ -46,4 +49,5 @@ public class Toy { // основные параметры игрушки
     this.weight = weight;
   }
 
+  //из PriorityQueue будем использовать сортировку и сравнение для розыгрыша
 }
