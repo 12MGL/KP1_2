@@ -1,26 +1,49 @@
 package ToyShopProject;
-  //здесь будем описывать игрушки
-public class Toy { //основные параметры игрушки
-  private int id; 
-  public String name; 
+
+//здесь будем описывать игрушки
+public class Toy { // основные параметры игрушки
+  private int id;
+  public String name;
   public int count;
   public int weight;
-}
 
-//геты по всем параметрам
+  public Toy(int id, String name, int count, int weight) { //конструктор класса
+    this.id = id;
+    this.name = name;
+    this.count = count;
+    this.weight = weight;
+  }
 
-public int getId(){
-  return id;
-}
+  // геты по всем параметрам
 
-public int getName(){
-  return name;
-}
+  public int getId() {
+    return id;
+  }
 
-public int getCount(){
-  return count;
-}
+  public String getName() {
+    return name;
+  }
 
-public int getWeight(){
-  return weight;
+  public int getCount() {
+    return count;
+  }
+
+  public int getWeight(){
+    return weight;
+  }
+
+//сеты по всем, кроме id. его мы не задаём
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setCount(int count) {
+    this.count = count;
+  }
+
+  public void setWeight(int weight) {
+    this.weight = weight;
+  }
+
 }
