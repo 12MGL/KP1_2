@@ -4,7 +4,7 @@ import java.util.PriorityQueue;
 
 
 //здесь будем описывать игрушки
-public class Toy { // основные параметры игрушки
+public class Toy implements Comparable<Toy> { // основные параметры игрушки
   private int id;
   public String name;
   public int count;
@@ -50,4 +50,5 @@ public class Toy { // основные параметры игрушки
   }
 
   //из PriorityQueue будем использовать сортировку и сравнение для розыгрыша
+
 }

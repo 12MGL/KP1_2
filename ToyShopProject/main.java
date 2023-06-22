@@ -14,7 +14,7 @@ public class main(String[] args) {
     String name = input.next();
     System.out.println("введите количество игрушек " + name + ":  ");
     int count = input.nextInt();
-    System.out.println("введите вес игрушки " + name + ":  ");
+    System.out.println("введите частоту (вес вероятности) выпадения игрушки " + name + " в %:  ");
     int weight = input.nextInt();
     Toy toy = new Toy(i, name, count, weight);    //в данном случае счётчик от 1 до общего количества для нас станет id игрушки, логично
     ToyShop.addToy(toy);  //по введённым параметрам добавляем игрушку в список, переходим на следующую итерацию
