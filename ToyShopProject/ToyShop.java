@@ -12,15 +12,15 @@ import java.util.*;
   //здесь будем описывать все манипуляции с игрушками - методы добавления 
   //новых игрушек, розыгрыш, запись результатов
 public class ToyShop {
-    private List<Toy> toyarray = new ArrayList<Toy>(); //список игрушек
+    private List<Toy> toyArray = new ArrayList<Toy>(); //список игрушек
     public PriorityQueue<Toy> toyQueue = new PriorityQueue<>(); //список игрушек сформируем через очередь
     private Map <Integer, String> idAndNames; //создаём связанный массив id и названий игрушек
     public List<Integer> weights = new ArrayList<>(); //список вероятностей
     public List<Integer> counts = new ArrayList<>(); //список всех игрушек по количеству игрушек
     
     public ToyShop(){
-    idAndNames = new HashMap<>(); //массив id - название
-    //toyarray.add(toy);
+      idAndNames = new HashMap<>(); //массив id - название
+    
     }
 
     public void addToy(Toy newToy) {
@@ -37,6 +37,7 @@ public class ToyShop {
         //Toy toy = new Toy(i, name, count, weight);    //в данном случае счётчик от 1 до общего количества для нас станет id игрушки, логично
         //ToyShop.addToy(toy);  //по введённым параметрам добавляем игрушку в список, переходим на следующую итерацию
         newToy = new Toy(i, name, count, weight);
+        toyQueue.add(newToy);
         toyQueue.add(newToy); //список игрушек формируем в очередь, которая в методе Toy настроена на сравнение весов (вероятностей)
         for (int j = 0; j < weight; j++) {
             weights.add(newToy.getId()); //добавляем игрушку в список вероятностей
@@ -48,6 +49,7 @@ public class ToyShop {
         System.out.println("Новая игрушка добавлена!");
       }
     }
+  
 
     public Toy getToy(){    //розыгрыш
       int index = new Random().nextInt(weights.size());
@@ -64,7 +66,7 @@ public class ToyShop {
           }
         }
         String name = idAndNames.get(toyId);  //по toyId находим в словаре имён нашу игрущку
-        for (Toy toy : toyarray) {
+        for (Toy toy : toyArray) {
         if (toy.getName().equals(name)) {
             return toy;         //и возвращаем в метод getToy
         }
