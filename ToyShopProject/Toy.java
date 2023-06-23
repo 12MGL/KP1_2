@@ -4,7 +4,7 @@ import java.util.PriorityQueue;
 
 
 //здесь будем описывать игрушки
-public class Toy implements Comparable<Toy> { // основные параметры игрушки
+public class Toy { // основные параметры игрушки
   private int id;
   public String name;
   public int count;
@@ -36,8 +36,8 @@ public class Toy implements Comparable<Toy> { // основные парамет
     return weight;
   }
 
-//сеты по всем, кроме id. его мы не задаём. 
-//добавлю. имя тоже не нужно будет менять.
+//сеты по всем, кроме id. его мы не задаём
+//имя тоже менять незачем. количество понадобится  менять для розыгрышей. вероятность - по условию.
 
   public void setCount(int count) {
     this.count = count;
@@ -48,9 +48,4 @@ public class Toy implements Comparable<Toy> { // основные парамет
   }
 
   //из PriorityQueue будем использовать сортировку и сравнение для розыгрыша
-@Override
-    public int compareTo(Toy other) {
-        if (other == null) {
-            return -1; // this < other
-        }
 }
