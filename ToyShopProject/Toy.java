@@ -4,7 +4,7 @@ import java.util.PriorityQueue;
 
 
 //здесь будем описывать игрушки
-public class Toy { // основные параметры игрушки
+public class Toy implements Comparable<Toy>{ // основные параметры игрушки, включаем Comparable для метода comparableTo
   private int id;
   public String name;
   public int count;
@@ -47,5 +47,11 @@ public class Toy { // основные параметры игрушки
     this.weight = weight;
   }
 
-  //из PriorityQueue будем использовать сортировку и сравнение для розыгрыша
+  @Override
+  public int compareTo(Toy other) {
+  return Integer.compare(this.weight, other.weight); 
+  //метод должен вернуть результат сравнения вероятностей
+  //выигрыша двух игрушек
+  }
+
 }

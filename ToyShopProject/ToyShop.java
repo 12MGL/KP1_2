@@ -1,5 +1,6 @@
 package ToyShopProject;
 
+import java.util.Scanner;
 import java.util.PriorityQueue;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class ToyShop {
         //Toy toy = new Toy(i, name, count, weight);    //в данном случае счётчик от 1 до общего количества для нас станет id игрушки, логично
         //ToyShop.addToy(toy);  //по введённым параметрам добавляем игрушку в список, переходим на следующую итерацию
         newToy = new Toy(i, name, count, weight);
-        toyQueue.add(newToy); //список игрушек формируем в очередь
+        toyQueue.add(newToy); //список игрушек формируем в очередь, которая в методе Toy настроена на сравнение весов (вероятностей)
       }
     }
 }
