@@ -3,7 +3,7 @@ package ToyShopProject;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-// import java.util.Scanner;
+import java.util.Scanner;
 // import java.util.PriorityQueue;
 // import java.util.ArrayList;
 // import java.util.List;
@@ -20,7 +20,7 @@ public class ToyShop {
     
     public ToyShop(){
       idAndNames = new HashMap<>(); //массив id - название
-    
+      //toyArray = addToy(Toy);
     }
 
     public void addToy(Toy newToy) {
@@ -31,18 +31,18 @@ public class ToyShop {
         System.out.println("введите название игрушки:  ");
         String name = input.next();
         System.out.println("введите количество игрушек " + name + ":  ");
-        int count = input.nextInt();
+        int currentCount = input.nextInt();
         System.out.println("введите вероятность выигрыша игрушки " + name + ":  ");
         int weight = input.nextInt();
         //Toy toy = new Toy(i, name, count, weight);    //в данном случае счётчик от 1 до общего количества для нас станет id игрушки, логично
         //ToyShop.addToy(toy);  //по введённым параметрам добавляем игрушку в список, переходим на следующую итерацию
-        newToy = new Toy(i, name, count, weight);
-        toyQueue.add(newToy);
+        newToy = new Toy(name, currentCount, weight);
+        toyArray.add(newToy);
         toyQueue.add(newToy); //список игрушек формируем в очередь, которая в методе Toy настроена на сравнение весов (вероятностей)
         for (int j = 0; j < weight; j++) {
             weights.add(newToy.getId()); //добавляем игрушку в список вероятностей
         }
-        for (int j = 0; j < count; j++) {
+        for (int j = 0; j < currentCount; j++) {
             counts.add(newToy.getId());   //добавляем игрушку в список с количествами всех игрушек
         }
         idAndNames.put(newToy.getId(), newToy.getName()); //добавляем игрушку в массив связок

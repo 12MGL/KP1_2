@@ -1,28 +1,22 @@
 package ToyShopProject;
-
-import java.util.Collections;
-import java.util.PriorityQueue;
-import java.util.Random;
-
-
 //здесь будем описывать игрушки
 public class Toy implements Comparable<Toy>{ // основные параметры игрушки, включаем Comparable для метода comparableTo
-  private int id;
+  private static int id;
   public String name;
   public int count;
   public int weight;
 
 
-  public Toy(int id, String name, int count, int weight) { //конструктор класса
-    this.id = id;
+  public Toy(String name, int count, int weight) { //конструктор класса
     this.name = name;
     this.count = count;
     this.weight = weight;
+    id++;
   }
 
   // геты по всем параметрам
 
-  public int getId() {
+  public static int getId() {
     return id;
   }
 
@@ -55,16 +49,4 @@ public class Toy implements Comparable<Toy>{ // основные парамет�
   //метод должен вернуть результат сравнения вероятностей
   //выигрыша двух игрушек
   }
-
-  // public Toy getToy(){    //розыгрыш
-  //   int index = new Random().nextInt(ToyShop.weights.size());
-    
-    
-  //     Toy toy = toyQueue.poll();  //берём первую игрушку из списка с весами
-  //     int toyIndex = weight.indexOf(toy.getId());
-  //     weight.remove(toyIndex);  //убираем игрушку из списка 
-  //     int ost = Collections.frequency(weight, toy.getId())
-      
-
-
 }
