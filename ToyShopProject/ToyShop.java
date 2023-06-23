@@ -1,5 +1,8 @@
 package ToyShopProject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 // import java.util.Scanner;
 // import java.util.PriorityQueue;
 // import java.util.ArrayList;
@@ -67,6 +70,18 @@ public class ToyShop {
         }
     }
     return null;
+    }
+    public void writeWins() {    //запись в файл результатов розыгрыша
+      try (PrintWriter writer = new PrintWriter(new File("Wins.txt"))) {
+          for (int i = 1; i <= 10; i++) {               //делаем 10 гетов - 10 розыгрышей
+              Toy toy = getToy(); 
+              String winner = String.format("%d. %s\n", i, toy.getName());    //каждый пишем в файл в формате 1.Кукла 2.Машинка
+              writer.write(winner);
+          }
+          } 
+      catch (FileNotFoundException e) {
+        System.out.println("Ошибка записи в файл");
+      }
+        System.out.println("Розыгрыш окончен!");
+    } 
 }
-} 
-
