@@ -10,6 +10,7 @@ public class Toy implements Comparable<Toy> { // основные парамет
   public int count;
   public int weight;
 
+
   public Toy(int id, String name, int count, int weight) { //конструктор класса
     this.id = id;
     this.name = name;
@@ -35,11 +36,8 @@ public class Toy implements Comparable<Toy> { // основные парамет
     return weight;
   }
 
-//сеты по всем, кроме id. его мы не задаём
-
-  public void setName(String name) {
-    this.name = name;
-  }
+//сеты по всем, кроме id. его мы не задаём. 
+//добавлю. имя тоже не нужно будет менять.
 
   public void setCount(int count) {
     this.count = count;
@@ -50,5 +48,9 @@ public class Toy implements Comparable<Toy> { // основные парамет
   }
 
   //из PriorityQueue будем использовать сортировку и сравнение для розыгрыша
-
+@Override
+    public int compareTo(Toy other) {
+        if (other == null) {
+            return -1; // this < other
+        }
 }
