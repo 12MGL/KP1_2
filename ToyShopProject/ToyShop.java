@@ -1,12 +1,7 @@
 package ToyShopProject;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.Scanner;
-// import java.util.PriorityQueue;
-// import java.util.ArrayList;
-// import java.util.List;
 import java.util.*;
 
   //здесь будем описывать все манипуляции с игрушками - методы добавления 
@@ -20,11 +15,10 @@ public class ToyShop {
     
     public ToyShop(){
       idAndNames = new HashMap<>(); //массив id - название
-      //toyArray = addToy(Toy);
     }
 
-    public void addToy(Toy newToy) {
-      Scanner input = new Scanner(System.in);
+      public void addToy() {
+      Scanner input = new Scanner(System.in, "cp866");
       System.out.println("Какое количество видов игрушек находятся в магазине?   ");
       int countToys = input.nextInt();
       for (int i = 1; i <= countToys; i++) {   //для каждой игрушки конструктором добавляем данные в список
@@ -34,8 +28,8 @@ public class ToyShop {
         int currentCount = input.nextInt();
         System.out.println("введите вероятность выигрыша игрушки " + name + ":  ");
         int weight = input.nextInt();
-        //Toy toy = new Toy(i, name, count, weight);    //в данном случае счётчик от 1 до общего количества для нас станет id игрушки, логично
-        //ToyShop.addToy(toy);  //по введённым параметрам добавляем игрушку в список, переходим на следующую итерацию
+        Toy newToy = new Toy(name, currentCount, weight);    //в данном случае счётчик от 1 до общего количества для нас станет id игрушки, логично
+        toyQueue.add(newToy);  //по введённым параметрам добавляем игрушку в список, переходим на следующую итерацию
         newToy = new Toy(name, currentCount, weight);
         toyArray.add(newToy);
         toyQueue.add(newToy); //список игрушек формируем в очередь, которая в методе Toy настроена на сравнение весов (вероятностей)
@@ -48,6 +42,7 @@ public class ToyShop {
         idAndNames.put(newToy.getId(), newToy.getName()); //добавляем игрушку в массив связок
         System.out.println("Новая игрушка добавлена!");
       }
+      input.close();
     }
   
 
@@ -55,32 +50,32 @@ public class ToyShop {
       int index = new Random().nextInt(weights.size());
       int toyId = weights.get(index); //среди списка вероятностей мы случайно выбираем 1 игрушку
       counts.remove(toyId); //из списка с количеством убираем эту игрушку
-      //Toy toy = toyQueue.poll();  //берём первую игрушку из списка с количествами
       weights.remove(toyId);  //убираем игрушку из списка весов
       int ost = Collections.frequency(counts, toyId); //проверяем, не закончились ли игрушки в списке количеств
-       if (ost == 0){ //и если закончились
+      if (ost == 0){ //и если закончились
+        counts.remove(toyId);
         for (int i = weights.size() - 1; i >= 0; i--) {
-            if (weights.get(i) == toyId) { 
-                weights.remove(i);  //то убираем все вхождения этой игрушки в список весов 
-            }
+          if (weights.get(i) == toyId) { 
+            weights.remove(i);  //то убираем все вхождения этой игрушки в список весов 
           }
         }
-        String name = idAndNames.get(toyId);  //по toyId находим в словаре имён нашу игрущку
-        for (Toy toy : toyArray) {
-        if (toy.getName().equals(name)) {
-            return toy;         //и возвращаем в метод getToy
-        }
+      }
+      String name = idAndNames.get(toyId);  //по toyId находим в словаре имён нашу игрущку
+      for (Toy toy : toyArray) {
+      if (toy.getName().equals(name)) {
+        return toy;         //и возвращаем в метод getToy
+      }
     }
     return null;
     }
     public void writeWins() {    //запись в файл результатов розыгрыша
-      try (PrintWriter writer = new PrintWriter(new File("Wins.txt"))) {
+      try (PrintWriter writer = new PrintWriter("ToyShopProject/Wins.txt")) {
           for (int i = 1; i <= 10; i++) {               //делаем 10 гетов - 10 розыгрышей
               Toy toy = getToy(); 
-              String winner = String.format("%d. %s\n", i, toy.getName());    //каждый пишем в файл в формате 1.Кукла 2.Машинка
+              String winner = String.format("%d. %s\n", i, toy.getName(), "cp866");    //каждый пишем в файл в формате 1.Кукла 2.Машинка
               writer.write(winner);
           }
-          } 
+      } 
       catch (FileNotFoundException e) {
         System.out.println("Ошибка записи в файл");
       }

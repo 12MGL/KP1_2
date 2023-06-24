@@ -1,18 +1,11 @@
 package ToyShopProject;
 
-import java.io.FileWriter;
-import java.util.Scanner;
-
 public class main{
   public static void main(String[] args) {
-    ToyShop toyShop = new ToyShop();
-      toyShop.getToy();
-      
+    ToyShop toyShop = new ToyShop();      
 
-      toyShop.addToy();
-      toyShop.addToy();
-      toyShop.addToy();
+    toyShop.addToy();
 
-      toyShop.writeWins();
-    }
+    toyShop.writeWins();
+  }
 }
