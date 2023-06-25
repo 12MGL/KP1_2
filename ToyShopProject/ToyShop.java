@@ -40,9 +40,6 @@ public class ToyShop {
       idAndNames.put(newToy.getId(), newToy.getName()); //добавляем игрушку в массив связок
       System.out.println("Новая игрушка добавлена!");
     }
-    // System.out.println(idAndNames);
-    // System.out.println(counts);
-    // System.out.println(weights);
     input.close();
     }
   
@@ -74,8 +71,6 @@ public class ToyShop {
       try (PrintWriter writer = new PrintWriter("ToyShopProject/Wins.txt")) {
         for (int f = 1; f <= 10; f++) {               //делаем 10 гетов - 10 розыгрышей
             Toy toy = getToy(); 
-             System.out.println(counts);
-             System.out.println(weights);
             String winner = String.format("%d. %s\n", f, toy.getName(), "cp866");    //каждый пишем в файл в формате 1.Кукла 2.Машинка
             writer.write(winner);
         }
